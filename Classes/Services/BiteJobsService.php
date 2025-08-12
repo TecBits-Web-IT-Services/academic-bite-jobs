@@ -26,11 +26,7 @@ final class BiteJobsService
     ) {}
 
     /**
-     * custom.zuordnung is a custom Field set by select type (@05.09.2023) custom fields are:
-     * 01: Berufungsverfahren
-     * 02: Wissenschaftliches Personal
-     * 03: Nicht-wissenschaftliches Personal
-     * 04: Ausbildungsstellen
+     * custom_field1 is a custom Field set by select type
      * @return string[]
      */
     public function fetchBiteJobs(?ServerRequestInterface $request = null): array
@@ -43,38 +39,39 @@ final class BiteJobsService
 
         $jobsSettings = $settings['settings']['jobs'];
 
-        $filter = [];
+        $parameters = [
+            'apikey' => $jobsSettings['jobListingKey'],
+            'channel' => 0,
+            'columns' => [
+                'title',
+                'description',
+                'jobSite'
+            ],
+            'language' => [
+                'filter' => [
+                    'enable' => true,
+                    'value' => $jobsSettings['language']
+                ]
+            ],
+            'order' => $jobsSettings['sortingDirection'],
+            'sort' => $jobsSettings['sortBy'],
+        ];
 
-        if ($jobsSettings['custom']['zuordnung'] !== 'all') {
-            $filter = [
-                'custom.zuordnung' => [
-                    'in' => [$jobsSettings['custom']['zuordnung']],
-                ],
+        if ($jobsSettings['custom_field1'] !== 'all') {
+            $parameters['custom_field1'] = [
+                'filter' => [
+                    'enable' => true,
+                    'value' => $jobsSettings['custom_field1']
+                ]
             ];
         }
 
         $jobs = [];
-        $additionalOptions = json_encode([
-            'key' => $jobsSettings['jobListingKey'],
-            'channel' => 0,
-            'locale' => 'de',
-            'page' => [
-                'offset' => 0,
-            ],
-            'filter' => $filter,
-            'sort' => [
-                'order' => $jobsSettings['sortingDirection'],
-                'by' => $jobsSettings['sortBy'],
-            ],
-        ]);
 
-        $searchUrl = 'https://jobs.b-ite.com/api/v1/postings/search';
+        $searchUrl = 'https://jobs.b-ite.com/adsapi/jobads?' . http_build_query($parameters);
 
         try {
-            $response = $this->requestFactory->request($searchUrl, 'POST', [
-                'headers' => ['Content-Type' => 'application/json'],
-                'body' => $additionalOptions,
-            ]);
+            $response = $this->requestFactory->request($searchUrl);
 
             $this->responseBody = json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $e) {
@@ -83,9 +80,9 @@ final class BiteJobsService
                 $e->getMessage()
             ));
         }
-        if (!empty($this->responseBody['jobPostings'])) {
+        if (!empty($this->responseBody['advertisements'])) {
             // We need to map the custom fields to the jobs so we have the labels instead of the values in the frontend
-            $jobs = $this->mapFieldsToJobs($this->responseBody['jobPostings'], 'umfang');
+            $jobs = $this->mapFieldsToJobs($this->responseBody['advertisements'], 'custom_field1');
             $jobs = $this->groupByRelations($jobs);
         }
 
@@ -104,9 +101,9 @@ final class BiteJobsService
     {
         $fields = [];
 
-        if (isset($this->responseBody['fields']['custom.zuordnung']['options'])) {
-            foreach ($this->responseBody['fields']['custom.zuordnung']['options'] as $value) {
-                $fields[$value['value']] = $value['label'];
+        if (isset($this->responseBody['fields']['custom_field1']['options'])) {
+            foreach ($this->responseBody['fields']['custom_field1']['options'] as $value) {
+                $fields[$value['id']] = $value['label'];
             }
         }
         return $fields;
@@ -121,9 +118,9 @@ final class BiteJobsService
     {
         $fields = [];
 
-        if (isset($this->responseBody['fields']['custom.' . $item]['options'])) {
-            foreach ($this->responseBody['fields']['custom.' . $item]['options'] as $key => $value) {
-                $fields[$value['value']] = $value['label'];
+        if (isset($this->responseBody['fields'][$item]['options'])) {
+            foreach ($this->responseBody['fields'][$item]['options'] as $key => $value) {
+                $fields[$value['id']] = $value['label'];
             }
         }
         return $fields;
@@ -140,7 +137,7 @@ final class BiteJobsService
 
         foreach ($jobs as $job) {
             foreach ($biteRelations as $relationKey => $relationValue) {
-                if ($relationKey === $job['custom']['zuordnung'][0]) {
+                if ($relationKey === $job['custom_field1']) {
                     $job['relationName'] = $relationValue;
                     $grouped[] = $job;
                 }
@@ -160,7 +157,10 @@ final class BiteJobsService
         $field = $this->findCustomBiteFieldLabelsFromOptions($customFieldName);
 
         foreach ($jobs as $job) {
-            $job[$customFieldName] = $field;
+            if (array_key_exists($job[$customFieldName], $field)) {
+                $job[$customFieldName] = $field[$job[$customFieldName]];
+            }
+
             $grouped[] = $job;
         }
 

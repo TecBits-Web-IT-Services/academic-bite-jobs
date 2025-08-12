@@ -48,8 +48,8 @@
             <trans-unit id="flexform.el.groupBy.items.none">
                 <source>No grouping</source>
             </trans-unit>
-            <trans-unit id="flexform.el.groupBy.items.thema">
-                <source>Thema</source>
+            <trans-unit id="flexform.el.groupBy.items.area">
+                <source>Area</source>
             </trans-unit>
 
             <trans-unit id="flexform.el.sortBy.label">
@@ -58,8 +58,8 @@
             <trans-unit id="flexform.el.sortBy.items.none">
                 <source>No sorting</source>
             </trans-unit>
-            <trans-unit id="flexform.el.sortBy.items.ends_on">
-                <source>Ends On</source>
+            <trans-unit id="flexform.el.sortBy.items.expires">
+                <source>Expires</source>
             </trans-unit>
             <trans-unit id="flexform.el.sortBy.items.title">
                 <source>Title</source>
@@ -75,23 +75,35 @@
                 <source>Descending</source>
             </trans-unit>
 
-            <trans-unit id="flexform.el.custom.zuordnung.label">
-                <source>Custom Zuordnung</source>
+            <trans-unit id="flexform.el.custom_field1.label">
+                <source>Custom assignment</source>
             </trans-unit>
             <trans-unit id="flexform.el.all">
                 <source>All</source>
             </trans-unit>
-            <trans-unit id="flexform.el.custom.zurodnung.items.01">
-                <source>Berufungsverfahren</source>
+            <trans-unit id="flexform.el.custom_field1.items.01">
+                <source>Lehrkräfte</source>
             </trans-unit>
-            <trans-unit id="flexform.el.custom.zurodnung.items.02">
-                <source>Wissenschaftliches Personal</source>
+            <trans-unit id="flexform.el.custom_field1.items.02">
+                <source>Mitarbeiter</source>
             </trans-unit>
-            <trans-unit id="flexform.el.custom.zurodnung.items.03">
-                <source>Nicht-wissenschaftliches Personal</source>
+            <trans-unit id="flexform.el.custom_field1.items.03">
+                <source>Praktika</source>
             </trans-unit>
-            <trans-unit id="flexform.el.custom.zurodnung.items.04">
-                <source>Ausbildungsstellen</source>
+            <trans-unit id="flexform.el.custom_field1.items.04">
+                <source>Professuren</source>
+            </trans-unit>
+            <trans-unit id="flexform.el.custom_field1.items.05">
+                <source>Präsidium</source>
+            </trans-unit>
+            <trans-unit id="flexform.el.custom_field1.items.06">
+                <source>Wissenschaftliche</source>
+            </trans-unit>
+            <trans-unit id="flexform.el.custom_field1.items.07">
+                <source>Ausbildung</source>
+            </trans-unit>
+            <trans-unit id="flexform.el.custom_field1.items.08">
+                <source>TransRegINT</source>
             </trans-unit>
 
             <trans-unit id="flexform.el.jobs.limit.label">
@@ -99,6 +111,16 @@
             </trans-unit>
             <trans-unit id="flexform.el.jobs.limit.description">
                 <source>Maximum number of job offers (0 = no limit)</source>
+            </trans-unit>
+
+            <trans-unit id="flexform.el.language.label">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="flexform.el.language.items.de">
+                <source>German</source>
+            </trans-unit>
+            <trans-unit id="flexform.el.language.items.en">
+                <source>English</source>
             </trans-unit>
         </body>
     </file>

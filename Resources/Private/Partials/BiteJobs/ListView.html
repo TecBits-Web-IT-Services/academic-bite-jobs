@@ -19,17 +19,13 @@
                 <div class="card-group h-100">
                     <div class="card text-white bg-dark-green border-dark h-100 overlay-link">
                         <div class="card-body">
-                            <small><time class="card-text text-white">{job.endsOn -> f:format.date(format: 'd.m.Y')}</time></small>
+                            <small><time class="card-text text-white">{job.expires -> f:format.date(format: 'd.m.Y')}</time></small>
                             <h4 class="card-title text-white">{job.title}</h4>
-                            <p class="card-subtitle  mb-2 text-white">{job.custom.bereich}</p>
+                            <p class="card-subtitle  mb-2 text-white">{job.custom_field2}</p>
                             <p class="card-text  text-white">
-                                <f:for each="{job.umfang}" as="scope" key="key" iteration="i">
-                                    <f:if condition="{key} == {job.custom.umfang}">
-                                        {scope}
-                                    </f:if>
-                                </f:for>
+                                {job.description}
                             </p>
-                            <a href="{job.url}" target="_blank" class="card-link link-white"><div class="visually-hidden">{job.title}</div> </a>
+                            <a href="{job.url.href}" target="_blank" class="card-link link-white"><div class="visually-hidden">{job.title}</div> </a>
                         </div>
                     </div>
                 </div>

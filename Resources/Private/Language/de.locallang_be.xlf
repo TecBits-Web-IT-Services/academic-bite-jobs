@@ -61,9 +61,9 @@
                 <source>No grouping</source>
                 <target>Keine Gruppierung</target>
             </trans-unit>
-            <trans-unit id="flexform.el.groupBy.items.thema">
-                <source>Thema</source>
-                <target>Thema</target>
+            <trans-unit id="flexform.el.groupBy.items.area">
+                <source>Area</source>
+                <target>Bereich</target>
             </trans-unit>
 
             <trans-unit id="flexform.el.sortBy.label">
@@ -74,9 +74,9 @@
                 <source>No sorting</source>
                 <target>Keine Sortierung</target>
             </trans-unit>
-            <trans-unit id="flexform.el.sortBy.items.ends_on">
-                <source>Ends On</source>
-                <target>Endet am</target>
+            <trans-unit id="flexform.el.sortBy.items.expires">
+                <source>Expires</source>
+                <target>Läuft ab</target>
             </trans-unit>
             <trans-unit id="flexform.el.sortBy.items.title">
                 <source>Title</source>
@@ -103,10 +103,28 @@
                 <target>Maximale Anzahl an Stellenangeboten (0 = kein Limit)</target>
             </trans-unit>
 
+            <trans-unit id="flexform.el.custom_field1.label">
+                <source>Category filter</source>
+                <target>Kategorie-Filter</target>
+            </trans-unit>
             <trans-unit id="flexform.el.all">
                 <source>All</source>
                 <target>Alle</target>
             </trans-unit>
+
+            <trans-unit id="flexform.el.language.label">
+                <source>Language</source>
+                <target>Sprache</target>
+            </trans-unit>
+            <trans-unit id="flexform.el.language.items.de">
+                <source>German</source>
+                <target>Deutsch</target>
+            </trans-unit>
+            <trans-unit id="flexform.el.language.items.en">
+                <source>English</source>
+                <target>Englisch</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

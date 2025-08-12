@@ -11,8 +11,8 @@
                     <eval>trim</eval>
                 </config>
             </settings.jobs.jobListingKey>
-            <settings.jobs.custom.zuordnung>
-                <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom.zuordnung.label</label>
+            <settings.jobs.custom_field1>
+                <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.label</label>
                 <config>
                     <type>select</type>
                     <renderType>selectSingle</renderType>
@@ -22,24 +22,40 @@
                             <value>all</value>
                         </numIndex>
                         <numIndex index="1" type="array">
-                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom.zurodnung.items.01</label>
-                            <value>01</value>
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.01</label>
+                            <value>Lehrkräfte</value>
                         </numIndex>
                         <numIndex index="2" type="array">
-                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom.zurodnung.items.02</label>
-                            <value>02</value>
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.02</label>
+                            <value>Mitarbeiter</value>
                         </numIndex>
                         <numIndex index="3" type="array">
-                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom.zurodnung.items.03</label>
-                            <value>03</value>
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.03</label>
+                            <value>Praktika</value>
                         </numIndex>
                         <numIndex index="4" type="array">
-                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom.zurodnung.items.04</label>
-                            <value>04</value>
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.04</label>
+                            <value>Professuren</value>
+                        </numIndex>
+                        <numIndex index="5" type="array">
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.05</label>
+                            <value>Präsidium</value>
+                        </numIndex>
+                        <numIndex index="6" type="array">
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.06</label>
+                            <value>Wissenschaftliche</value>
+                        </numIndex>
+                        <numIndex index="7" type="array">
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.07</label>
+                            <value>ausbildung</value>
+                        </numIndex>
+                        <numIndex index="8" type="array">
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.custom_field1.items.08</label>
+                            <value>transregint</value>
                         </numIndex>
                     </items>
                 </config>
-            </settings.jobs.custom.zuordnung>
+            </settings.jobs.custom_field1>
             <settings.jobs.view>
                 <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.view.label</label>
                 <config>
@@ -72,8 +88,8 @@
                             <value>none</value>
                         </numIndex>
                         <numIndex index="1" type="array">
-                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.groupBy.items.thema</label>
-                            <value>thema</value>
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.groupBy.items.area</label>
+                            <value>area</value>
                         </numIndex>
                     </items>
                     <default>none</default>
@@ -86,15 +102,15 @@
                     <renderType>selectSingle</renderType>
                     <items>
                         <numIndex index="0" type="array">
-                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.sortBy.items.ends_on</label>
-                            <value>endsOn</value>
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.sortBy.items.expires</label>
+                            <value>expires</value>
                         </numIndex>
                         <numIndex index="1" type="array">
                             <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.sortBy.items.title</label>
                             <value>title</value>
                         </numIndex>
                     </items>
-                    <default>endsOn</default>
+                    <default>expires</default>
                 </config>
             </settings.jobs.sortBy>
             <settings.jobs.sortingDirection>
@@ -122,6 +138,24 @@
                     <type>number</type>
                 </config>
             </settings.jobs.limit>
+            <settings.jobs.language>
+                <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.language.label</label>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items>
+                        <numIndex index="0" type="array">
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.language.items.de</label>
+                            <value>de</value>
+                        </numIndex>
+                        <numIndex index="1" type="array">
+                            <label>LLL:EXT:academic_bite_jobs/Resources/Private/Language/locallang_be.xlf:flexform.el.language.items.en</label>
+                            <value>en</value>
+                        </numIndex>
+                    </items>
+                    <default>de</default>
+                </config>
+            </settings.jobs.language>
         </el>
     </ROOT>
 </T3DataStructure>

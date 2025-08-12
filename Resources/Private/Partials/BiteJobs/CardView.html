@@ -14,32 +14,28 @@
 
 <f:section name="JobsCard">
 
-<section class="row g-4">
-    <f:if condition="{header}">
-        <h3 class="mb-6">{header}</h3>
-    </f:if>
-    <f:for each="{jobs}" as="job" iteration="i">
-        <div class="col-12 col-sm-6 col-lg-3">
-            <div class="card-group h-100">
-                <div class="card bg-dark-green border-white h-100 overlay-link">
-                    <div class="card-body">
-                        <small><time class="card-text text-white">{job.endsOn -> f:format.date(format: 'd.m.Y')}</time></small>
-                        <h4 class="card-title text-white">{job.title}</h4>
-                        <p class="card-subtitle mb-2 text-white">{job.custom.bereich}</p>
-                    </div>
-                    <div class="card-footer">
-                        <p class="card-text">
-                            <f:for each="{job.umfang}" as="scope" key="key" iteration="i">
-                                <f:if condition="{key} == {job.custom.umfang}">
-                                    Umfang: {scope}
-                                </f:if>
-                            </f:for>
-                        </p>
-                        <a href="{job.url}" target="_blank" class="card-link link-white"><div class="visually-hidden">{job.title}</div> </a>
+    <section class="row g-4">
+        <f:if condition="{header}">
+            <h3 class="mb-6">{header}</h3>
+        </f:if>
+        <f:for each="{jobs}" as="job" iteration="i">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card-group h-100">
+                    <div class="card bg-dark-green border-white h-100 overlay-link">
+                        <div class="card-body">
+                            <small><time class="card-text text-white">{job.expires -> f:format.date(format: 'd.m.Y')}</time></small>
+                            <h4 class="card-title text-white">{job.title}</h4>
+                            <p class="card-subtitle mb-2 text-white">{job.custom_field2}</p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text">
+                                {job.description}
+                            </p>
+                            <a href="{job.url.href}" target="_blank" class="card-link link-white"><div class="visually-hidden">{job.title}</div> </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </f:for>
-</section>
+        </f:for>
+    </section>
 </f:section>

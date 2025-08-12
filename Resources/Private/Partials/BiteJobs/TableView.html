@@ -15,43 +15,39 @@
     </f:if>
     <table class="table table-striped-primary border-primary caption-top">
         <thead class="table-primary">
-            <tr>
-                <th>
-                    Bereich
-                </th>
-                <th>
-                    Stellenbezeichnung
-                </th>
-                <th>
-                    Umfang
-                </th>
-                <th>
-                    Bewerbungsfrist
-                </th>
-            </tr>
+        <tr>
+            <th>
+                Stellenbezeichnung
+            </th>
+            <th>
+                Bereich
+            </th>
+            <th>
+                Beschreibung
+            </th>
+            <th>
+                Bewerbungsfrist
+            </th>
+        </tr>
         </thead>
         <tbody class="table-group-divider table-secondary" >
-            <f:for each="{jobs}" as="job">
-                <tr class="overlay-link">
-										<td>
-											<a href="{job.url}" target="_blank" class="card-link">{job.title}</a>
-										</td>
-                    <td>
-                        {job.custom.bereich}
-                    </td>
+        <f:for each="{jobs}" as="job">
+            <tr class="overlay-link">
+                <td>
+                    <a href="{job.url.href}" target="_blank" class="card-link">{job.title}</a>
+                </td>
+                <td>
+                    {job.custom_field2}
+                </td>
 
-                    <td>
-                        <f:for each="{job.umfang}" as="scope" key="key" iteration="i">
-                            <f:if condition="{key} == {job.custom.umfang}">
-                                {scope}
-                            </f:if>
-                        </f:for>
-                    </td>
-                    <td>
-                        {job.endsOn -> f:format.date(format: 'd.m.Y')}
-                    </td>
-                </tr>
-            </f:for>
+                <td>
+                    {job.description}
+                </td>
+                <td>
+                    {job.expires -> f:format.date(format: 'd.m.Y')}
+                </td>
+            </tr>
+        </f:for>
         </tbody>
     </table>
 </f:section>
